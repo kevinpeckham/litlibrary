@@ -1,0 +1,7 @@
+{
+	"framework": "sveltekit-1",
+	"buildCommand": "turbo run build",
+	"ignoreCommand": "npx turbo-ignore",
+	"installCommand": "pnpm install",
+	"outputDirectory": ".vercel/output"
+}

@@ -1,0 +1,340 @@
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 1. ENUMS
+enum AccessLevel {
+	PRIVATE
+	TEAM
+	ACCOUNT
+	PUBLIC
+}
+enum AccountStatus {
+	ACTIVE
+	SUSPENDED
+}
+enum AccountType {
+  FREE
+}
+enum PageSize {
+  LETTER
+  LEDGER
+  WIDESCREEN
+}
+enum PageOrientation {
+  PORTRAIT
+  LANDSCAPE
+}
+enum TemplateType {
+  PAGE
+  WIDGET
+}
+enum VersionStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+
+// 2. MODELS
+
+// users, roles & accounts
+model User {
+  id                         String         @id @default(uuid())
+  email                      String         @unique
+  name_first                 String         @default("")
+	name_last                  String         @default("")
+	email_verified             Boolean        @default(false)
+	email_verification_key     String?
+	email_verification_expires DateTime?
+	title                      String?
+  created_at                 DateTime       @default(now())
+  updated_at                 DateTime       @updatedAt
+  roles                      UserRole[]
+  session                    Session[]
+  teams                      Team[]
+	account                    Account[]
+	documents_owned            Document[]
+	page_templates_owned       PageTemplate[]
+
+}
+
+// roles
+// e.g. "admin", "editor", "viewer"
+model Role {
+  id           String     @id @default(uuid())
+  name         String     @unique
+  userRoles    UserRole[]
+	account_id   String
+	account      Account    @relation(fields: [account_id], references: [id])
+
+	@@index([account_id])
+}
+
+model UserRole {
+	id        String     @id @default(uuid())
+	user_id   String
+	user      User       @relation(fields: [user_id], references: [id])
+	role_id   String
+	role      Role       @relation(fields: [role_id], references: [id])
+	created_at DateTime   @default(now())
+	updated_at DateTime   @updatedAt
+
+	@@index([user_id])
+	@@index([role_id])
+}
+
+model Session {
+  id            Int      @id @default(autoincrement())
+  user_id       String?
+  user          User?    @relation(fields: [user_id], references: [id])
+  access_token  String?  @unique
+  session_token String   @unique
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+  ip            String?
+  country       String?
+
+  @@index([user_id])
+}
+model Team {
+  id                        String          @id @default(uuid())
+  name                      String          @unique
+  created_at                DateTime        @default(now())
+  updated_at                DateTime        @updatedAt
+  users                     User[]
+  account_id                String
+  account                   Account         @relation(fields: [account_id], references: [id])
+  documents                 Document[]
+  page_templates            PageTemplate[]
+
+  @@index([account_id])
+}
+
+model Account {
+  id                 String           @id @default(uuid())
+  name               String           @unique
+  type               AccountType      @default(FREE)
+  status             AccountStatus    @default(ACTIVE)
+  created_at         DateTime         @default(now())
+  updated_at         DateTime         @updatedAt
+	slug               String           @unique
+  editions           Edition[]
+  documents          Document[]
+	roles              Role[]
+  tags               Tag[]
+  page_templates     PageTemplate[]
+  teams              Team[]
+	users              User[]
+  categories         Category[]
+
+}
+
+// tags, categories, editions
+model Tag {
+  id                 String      @id @default(uuid())
+  name               String      @unique
+  documents          Document[]
+	templates_page     PageTemplate[]
+  account_id         String
+  account            Account           @relation(fields: [account_id], references: [id])
+	synonyms           Json?
+
+  @@unique ([name, account_id])
+  @@index([account_id])
+}
+
+// categories
+// e.g. "Flyers" or "Brochures"
+model Category {
+  id                 String      @id @default(uuid())
+  account_id         String      // unique per account?
+  account            Account     @relation(fields: [account_id], references: [id])
+  namePlural         String
+  nameSingular       String
+  created_at         DateTime    @default(now())
+  updated_at         DateTime    @updatedAt
+  documents          Document[]
+
+  @@unique([account_id, namePlural])
+  @@index([account_id])
+}
+
+// editions
+// edition is a variant of a document version with some dynamically applied changes
+// e.g. a document version might have a "Verizon" version and a "T-Mobile" version
+// editions need their own terminology for short and long slugs e.g. "T-Mobile" and "tmo"
+model Edition {
+  id                 String      @id @default(uuid())
+  name               String
+  slug               String
+  short_slug          String
+  account_id         String
+  account            Account     @relation(fields: [account_id], references: [id])
+  documents          Document[]
+  @@index([account_id])
+	@@unique([account_id, slug])
+}
+
+// documents
+model Document {
+  // unique & id
+	id                 String            @id @default(uuid())
+  number             Int               @unique
+
+	// permissions
+  // private e.g. only visible to owner
+	// or visible to team members
+	// or visible to account members
+	// or visible to public
+	permission_view        AccessLevel @default(PRIVATE)
+	permission_edit        AccessLevel @default(PRIVATE)
+
+  // category
+  category           Category[]
+
+	// owner
+	owner_id           String
+	owners              User[]
+
+	// teams
+	teams               Team[]
+
+  // account reference
+  account_id         String
+  account            Account           @relation(fields: [account_id], references: [id])
+
+  // editions
+  editions           Edition[]
+
+  // meta content
+  title              String            @default("")
+	description        String            @default("")
+  notes              String            @default("")
+
+  // timestamps
+  created_at         DateTime          @default(now())
+  updated_at         DateTime          @updatedAt
+
+
+  // versions
+  versions           DocumentVersion[]
+
+  // tags
+  tags               Tag[]
+
+	@@index([owner_id])
+  @@index([account_id])
+}
+model DocumentVersion {
+  id                 String      @id @default(uuid())
+  number             String      @unique // e.g. 1.0.0
+
+  // document reference
+  document_id        String
+  document           Document     @relation(fields: [document_id], references: [id])
+
+  // generate url from document number and version number
+	// no need to store in database
+
+  // history
+  created_at         DateTime     @default(now())
+  updated_at         DateTime     @updatedAt
+
+  // status
+  status              VersionStatus @default(DRAFT)
+
+  // notes
+  notes             String?
+
+	// specs
+  page_size         PageSize  @default(LETTER)
+  page_orientation  PageOrientation @default(PORTRAIT)
+
+	// ?? cover
+	// ?? toc
+	// ?? back cover
+
+	// internal pages
+	pages              PageInstance[]
+	page_order         Json?  // array of page ids
+
+	// ?? options
+	// ?? styles
+	// ?? assets
+
+  // comments & feedback
+  // for future consideration
+
+  @@index([document_id])
+}
+model PageInstance {
+	id                        String      @id @default(uuid())
+
+	created_at                DateTime    @default(now())
+	updated_at                DateTime    @updatedAt
+
+	// document version
+	document_version_id       String
+	document_version          DocumentVersion @relation(fields: [document_version_id], references: [id])
+
+	// template
+	template_id               String?
+	template                  PageTemplate?   @relation(fields: [template_id], references: [id])
+
+	// styles
+	// -- these are merged with and will override template styles
+	styles                    Json?
+
+
+	// content
+	content                   Json?
+
+	@@index([document_version_id])
+	@@index([template_id])
+}
+model PageTemplate {
+  id                        String      @id @default(uuid())
+  name                      String
+  description               String
+  created_at                DateTime    @default(now())
+  updated_at                DateTime    @updatedAt
+
+	// page instance
+	page_instances            PageInstance[]
+
+  // markup
+  markup                    Json?
+
+	// permissions
+	permission_view           AccessLevel @default(PRIVATE)
+	permission_edit           AccessLevel @default(PRIVATE)
+
+	// base styles associated with template
+	styles                     Json?
+
+  // tags e.g. "header", "footer", "sidebar", "cover", etc.
+  tags                      Tag[]
+
+	// owner
+	owner                     User[]
+
+	// teams
+	teams                     Team[]
+
+	// account
+	account_id                String
+	account                   Account     @relation(fields: [account_id], references: [id])
+
+
+	@@index([account_id])
+  @@unique ([account_id, name])
+}
+
+

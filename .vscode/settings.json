@@ -1,0 +1,187 @@
+{
+	"files.autoSave": "afterDelay",
+
+	// editor settings for supporting Pug
+	"editor.renderWhitespace": "all",
+	"editor.tabSize": 2,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"editor.trimAutoWhitespace": false,
+	"editor.indentSize": "tabSize",
+	"editor.wordWrap": "on",
+	"editor.quickSuggestions": {
+		"strings": "on"
+	},
+	"editor.unicodeHighlight.includeComments": "inUntrustedWorkspace",
+
+	// better-comments
+	"better-comments.multilineComments": true,
+	"better-comments.highlightPlainText": true,
+	"better-comments.tags": [
+		{
+			"tag": "!!",
+			"color": "#ea0026",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false
+		},
+		{
+			"tag": "??",
+			"color": "#FF8C00",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false
+		},
+		{
+			"tag": "todo",
+			"color": "#34A8E4",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false
+		},
+		{
+			"tag": "**",
+			"color": "#72C9D6",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": true,
+			"italic": true
+		},
+		{
+			"tag": "$$",
+			"color": "#04A222",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false
+		}
+		//#FF8C00
+	],
+
+	// cspell
+	"cSpell.autoFormatConfigFile": true,
+	"cSpell.showAutocompleteSuggestions": true,
+	"cSpell.enableFiletypes": ["svelte", "json5", "json", "pug"],
+	"cSpell.ignorePaths": [
+		"bun.lockb",
+		"yarn.lock",
+		"package-lock.json",
+		"package.json",
+		"node_modules",
+		"pnpm-lock.yaml",
+		".git/objects",
+		".vscode",
+		".vercel",
+		".svelte-kit",
+		".env"
+	],
+	"cSpell.words": [
+		"esBuild",
+		"Fira",
+		"JSON",
+		"Menlo",
+		"Peckham",
+		"Tailwindcss",
+		"Playwright",
+		"Rollup",
+		"SvelteKit",
+		"Svelte",
+		"sveltejs",
+		"Vite",
+		"Vitest",
+		"Vercel"
+	],
+	"cSpell.ignoreWords": ["esbenp", "Powerline", "dev", "devs", "jsonify"],
+	"cSpell.allowCompoundWords": true,
+
+	// css language features settings
+	"css.format.enable": true,
+	"css.hover.references": true,
+	"css.format.spaceAroundSelectorSeparator": true,
+	"css.lint.unknownAtRules": "ignore",
+	"css.lint.zeroUnits": "warning",
+	"css.lint.universalSelector": "warning",
+	"css.lint.duplicateProperties": "warning",
+	"css.lint.important": "warning",
+
+	// editor settings related to Prettier and code formatting
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"editor.formatOnType": false,
+	"editor.formatOnPaste": false,
+	"prettier.documentSelectors": ["**/*.svelte", "**/*.pug"], // necessary
+
+	// svelte
+	"[svelte]": {
+		"editor.defaultFormatter": "svelte.svelte-vscode"
+	},
+	"svelte.enable-ts-plugin": false,
+	"svelte.plugin.svelte.enable": true,
+	"svelte.plugin.svelte.defaultScriptLanguage": "ts",
+	"svelte.ui.svelteKitFilesContextMenu.enable": "always",
+
+	// vs code settings recommended by Tailwind CSS IntelliSense extension
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+
+	// Tailwind Intellisense Extension Settings
+	"tailwindCSS.classAttributes": [
+		"class",
+		"className",
+		"ngClass",
+		"classes",
+		"clazz"
+	],
+	"tailwindCSS.codeActions": true,
+	"tailwindCSS.colorDecorators": true,
+	"tailwindCSS.emmetCompletions": true,
+	"tailwindCSS.files.exclude": [
+		"**/.git/**",
+		".gitignore",
+		"**/node_modules/**",
+		"**/.hg/**",
+		"**/.svn/**",
+		"**/.vercel/**",
+		"**/.svelte-kit/**",
+		"**/.vscode/**",
+		"**/tests/**",
+		"**/tests-results/**"
+	],
+	"tailwindCSS.hovers": true,
+	"tailwindCSS.includeLanguages": {
+		"pug": "html",
+		"plaintext": "html"
+	},
+	"tailwindCSS.showPixelEquivalents": true,
+	"tailwindCSS.suggestions": true,
+	"tailwindCSS.lint.invalidScreen": "error",
+	"tailwindCSS.lint.invalidVariant": "error",
+	"tailwindCSS.lint.invalidTailwindDirective": "error",
+	"tailwindCSS.lint.invalidApply": "error",
+	"tailwindCSS.lint.invalidConfigPath": "error",
+	"tailwindCSS.lint.cssConflict": "warning",
+
+	// settings for the ESLint extension
+	"eslint.experimental.useFlatConfig": true,
+	"eslint.lintTask.enable": true,
+	"eslint.run": "onType",
+	"eslint.probe": [
+		"javascript",
+		"typescript",
+		"html",
+		"vue",
+		"markdown",
+		"json",
+		"svelte",
+		"pug"
+	]
+}

@@ -1,0 +1,13 @@
+version: "0.2"
+language: en
+ignorePaths:
+  - pnpm-lock.yaml
+  - pnpm-workspace.yaml
+  - package.json
+dictionaryDefinitions: null
+dictionaries: null
+enableCompoundWords: true
+words:
+  - Logix
+import: null
+ignoreWords: null

@@ -1,0 +1,273 @@
+{
+	"name": "SecureLogix",
+	"slug": "slx",
+	"id": "VYQnUKSBowWeme0rmbZ7W",
+	"type": "FREE",
+	"status": "ACTIVE",
+	"created_at": "2024-01-06T21:24:42.231Z",
+	"categories": [
+		{
+			"id": "0L7BsYn_qqGrsRoIPAOU5",
+			"namePlural": "Unknown",
+			"nameSingular": "Unknown"
+		},
+		{
+			"id": "vO8_PkG3Iuoqwt2ERx8XJ",
+			"namePlural": "Battlecards",
+			"nameSingular": "Battlecard"
+		},
+		{
+			"id": "kLSGnnSTfqvMsh45CUlAL",
+			"namePlural": "Customer Stories",
+			"nameSingular": "Customer Story"
+		},
+		{
+			"id": "BJHW_IzyhWyW0-jQZKxka",
+			"namePlural": "Datasheets"
+		},
+		{
+			"id": "L3C_seT4eWM6NyAgahqrc",
+			"namePlural": "Infographics",
+			"nameSingular": "Infographic"
+		},
+		{
+			"id": "COqYLb2gazN58qV5iIpZ0",
+			"namePlural": "Brochures",
+			"nameSingular": "Brochure"
+		},
+		{
+			"id": "8ecw033HRdA8ITNmohuxD",
+			"namePlural": "Playbooks",
+			"nameSingular": "Playbook"
+		},
+		{
+			"id": "i5K2ltcZHl-CwK1RfRp7y",
+			"namePlural": "Presentations",
+			"nameSingular": "Presentation"
+		},
+		{
+			"id": "3Jk_IuAWIzaOm4lZ_j8hb",
+			"namePlural": "FAQs",
+			"nameSingular": "FAQ"
+		},
+		{
+			"id": "YdVqnRELYt52hooLp8AP2",
+			"namePlural": "Flyers",
+			"nameSingular": "Flyer"
+		},
+		{
+			"id": "VrXSVKbxIK_aWmS52DZOX",
+			"namePlural": "Whitepapers",
+			"nameSingular": "Whitepaper"
+		},
+		{
+			"id": "r3lADkNAHim6YFz90FJsU",
+			"namePlural": "Technical Briefs",
+			"nameSingular": "Technical Brief"
+		},
+		{
+			"id": "t3x3ZOyF6vmJ4ZYPqpXSs",
+			"namePlural": "Technical Discussions",
+			"nameSingular": "Technical Discussion"
+		}
+	],
+	"editions": [
+		{
+			"id": "S9Jy0XhGYNQIqcSCQQAFW",
+			"name": "Verizon",
+			"slug": "verizon",
+			"short_slug": "vrz"
+		},
+		{
+			"id": "aLuQUvpNsDikbSOMt9sEY",
+			"name": "ATT",
+			"slug": "att",
+			"short_slug": "att"
+		},
+		{
+			"id": "ACgRZko6ITD_T85gmOKqa",
+			"name": "T-Mobile",
+			"slug": "t-mobile",
+			"short_slug": "tmo"
+		}
+	],
+	"roles": [
+		{
+			"id": "GUJgMyn4ISdG3jR5EraVK",
+			"name": "admin"
+		},
+		{
+			"id": "eEeauCVrZCMsHtvc4gW2o",
+			"name": "user"
+		}
+	],
+	"tags": [
+		{
+			"id": "D4AhQef61xSQyNlLC6FBj",
+			"name": "Call Security",
+			"synonyms": ["Voice Security", "Call Security", "Voice Network Security"]
+		},
+		{
+			"id": "1oPCDVSPB-KqpAy9w3Ufu",
+			"name": "Call Authentication",
+			"synonyms": [
+				"Call Verification",
+				"Caller Authentication",
+				"Caller Verification"
+			]
+		},
+		{
+			"id": "SZao1mmuvm7FlJwB9hk6s",
+			"name": "Call Defense"
+		},
+		{
+			"id": "G6_f_w2OlIah1_7fWwLco",
+			"name": "Orchestra One"
+		},
+		{
+			"id": "THpClENO_F5HxFtJIOhjg",
+			"name": "Reputation Defense"
+		},
+		{
+			"id": "8vhIQoC_QpvvQDwNNZ-Z3",
+			"name": "TrueCall"
+		},
+		{
+			"id": "_XKCPrVzWL5UoNGosw8L1",
+			"name": "Contact"
+		}
+	],
+	"users": [
+		{
+			"id": "lSbuRt4IJri3VUmCqzVEV",
+			"name_first": "Kevin",
+			"name_last": "Peckham",
+			"email": "kevin@lightningjar.com",
+			"account": {
+				"connect": {
+					"id": "VYQnUKSBowWeme0rmbZ7W"
+				}
+			}
+		}
+	],
+	"styles": {
+		"colors": {
+			"oxford": {
+				"DEFAULT": "hsla(218, 100%, 16%, 1.0)"
+			},
+			"midnight": {
+				"DEFAULT": "hsla(210, 31%, 20%, 1.0)"
+			},
+			"spanishRed": {
+				"DEFAULT": "hsla(349, 100%, 46%, 1.0)",
+				"600": "hsla(350, 100%, 40%, 1.0)",
+				"700": "hsla(350, 100%, 32%, 1.0)",
+				"800": "hsla(350, 100%, 24%, 1.0",
+				"900": "hsla(350, 100%, 32%, 1.0)",
+				"dark": "#D9002A"
+			},
+			"cultured": "#ECECEC",
+			"darkOrchid": "#A036B4",
+			"blueViolet": "#7D3EC9",
+			"byzantine": "#BC16A5",
+			"fashionFuchsia": "#ea009c",
+			"magenta": "#FF00FF",
+			"richBlack": "#081526",
+			"russianViolet": "#1F0144",
+			"selectiveYellow": "#FFBB00",
+			"hestia": "#EA2700",
+			"seaSalt": "#FCFCFC",
+			"steelPink": "#DD23C4",
+			"steelPinkDarker": "D20FBF",
+			"xanthous": "#f7b32b"
+		},
+		"fontFamily": {
+			"helveticaNeue": ["Helvetica Neue", "sans-serif"],
+			"sora": ["Sora", "sans-serif"],
+			"source": ["'Source Sans 3'", "sans-serif"],
+			"monoLisa": [
+				"MonoLisa Variable",
+				"Operator Mono Lig",
+				"Operator Mono",
+				"ui-monospace",
+				"SFMono-Regular",
+				"Menlo",
+				"Monaco",
+				"Consolas",
+				"Liberation Mono",
+				"Courier New",
+				"monospace"
+			],
+			"montserrat": [
+				"Montserrat",
+				"ui-sans-serif",
+				"system-ui",
+				"-apple-system",
+				"sans-serif"
+			],
+			"centuryGothic": [
+				"Century Gothic",
+				"Questrial",
+				"system-ui",
+				"-apple-system",
+				"sans-serif"
+			]
+		}
+	},
+	"trademarks": {
+		"owner": "SecureLogix Corporation",
+		"statements": [
+			{
+				"description": "copyright statement",
+				"statement": "© Copyright {{ year }} {{ owner }}. All Rights Reserved."
+			},
+			{
+				"description": "registered trademarks and registered service marks",
+				"marks": {
+					"include_always": [
+						"SecureLogix",
+						"SecureLogix Corporation",
+						"the SecureLogix Emblem"
+					],
+					"include_when_used": ["ETM"]
+				},
+				"text": {
+					"singular": "{{mark}} is a registered trademark and registered service mark of {{owner}} in the U.S.A. and other countries.",
+					"plural": "{{marks}} are registered trademarks and registered service marks of {{owner}} in the U.S.A. and other countries."
+				}
+			},
+			{
+				"description": "registered trademarks",
+				"marks": { "include_when_used": ["PolicyGuru"] },
+				"text": {
+					"singular": "{{mark}} is a registered trademark of {{owner}} in the U.S.A.",
+					"plural": "{{marks}} are registered trademarks of {{owner}} in the U.S.A."
+				}
+			},
+			{
+				"description": "trademarks and service marks",
+				"marks": {
+					"include_when_used": [
+						"Branded Call Secure",
+						"Call Defense",
+						"Call Secure",
+						"Contact",
+						"Orchestra One",
+						"Red List",
+						"Reputation Defense",
+						"TrueCall",
+						"Vox"
+					]
+				},
+				"text": {
+					"singular": "{{mark}} is a trademark and service mark of {{owner}} in the U.S.A.",
+					"plural": "{{marks}} are trademarks and service marks of {{owner}} in the U.S.A."
+				}
+			},
+			{
+				"description": "all other trademarks statement",
+				"statement": "All other trademarks mentioned herein are the property of their respective owners."
+			}
+		]
+	}
+}
